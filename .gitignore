@@ -1,0 +1,8 @@
+# Python byte code.
+__pycache__
+
+# Virtual environment.
+venv
+
+# Llama-index index.
+storage
