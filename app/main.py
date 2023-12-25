@@ -20,6 +20,8 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory='templates')
 
+os.environ['OPENAI_API_KEY'] = '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'
+
 
 @app.get('/', response_class=HTMLResponse)
 async def index(request: Request):
