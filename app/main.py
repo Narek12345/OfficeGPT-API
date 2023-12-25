@@ -20,8 +20,6 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory='templates')
 
-os.environ['OPENAI_API_KEY'] = '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'
-
 
 @app.get('/', response_class=HTMLResponse)
 async def index(request: Request):
@@ -29,7 +27,9 @@ async def index(request: Request):
 
 
 @app.post('/upload_file_for_training')
-async def upload_file_for_training(file: UploadFile):
+async def upload_file_for_training(file: UploadFile, OPENAI_API_KEY: str):
+	os.environ['OPENAI_API_KEY'] = OPENAI_API_KEY
+
 	try:
 		contents = file.file.read()
 		with open(file.filename, 'wb') as f:
