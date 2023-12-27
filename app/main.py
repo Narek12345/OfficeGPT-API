@@ -20,8 +20,6 @@ app = FastAPI()
 
 templates = Jinja2Templates(directory='templates')
 
-# os.environ['OPENAI_API_KEY'] = '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'
-
 
 @app.get('/', response_class=HTMLResponse)
 async def index(request: Request):
@@ -54,7 +52,7 @@ def upload_file_for_training(file: UploadFile, OPENAI_API_KEY: str):
 	index.storage_context.persist()
 
 
-@app.get('/make_request_in_chatgpt')
+@app.post('/make_request_in_chatgpt')
 def make_request_in_chatgpt(text: str):
 	storage_context = StorageContext.from_defaults(persist_dir='./storage')
 	index = load_index_from_storage(storage_context)

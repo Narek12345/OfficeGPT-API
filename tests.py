@@ -1,6 +1,6 @@
 import requests, json
 
-URL = 'http://127.0.0.1:8000'
+URL = 'https://officegpt-api.onrender.com'
 
 
 def upload_file_for_training():
@@ -13,9 +13,8 @@ def upload_file_for_training():
 
 def make_request_in_chatgpt():
 	text = 'Как меня зовут. Какая у меня нация ?'
-	url = URL + '/make_request_in_chatgpt'
-	params = {'text': text}
-	resp = requests.get(url=url, params=params)
+	url = URL + '/make_request_in_chatgpt/?text=' + text
+	resp = requests.post(url=url)
 
 	data = resp.json()
 	print(data)
