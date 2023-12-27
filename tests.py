@@ -1,11 +1,11 @@
 import requests, json
 
-URL = 'https://officegpt-api.onrender.com'
+URL = 'http://127.0.0.1:8000'
 
 
 def upload_file_for_training():
 	url = URL + '/upload_file_for_training'
-	# params = {'OPENAI_API_KEY': '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'}
+	params = {'OPENAI_API_KEY': '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'}
 	file = {'file': open(r'C:\Users\Нарек\Desktop\document.txt')}
 	resp = requests.post(url=url, params=params, files=file)
 	print(resp)
@@ -17,9 +17,9 @@ def make_request_in_chatgpt():
 	params = {'text': text}
 	resp = requests.get(url=url, params=params)
 
-	data = resp
+	data = resp.json()
 	print(data)
 
 
-upload_file_for_training()
-# make_request_in_chatgpt()
+# upload_file_for_training()
+make_request_in_chatgpt()
